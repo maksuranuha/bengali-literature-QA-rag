@@ -245,9 +245,58 @@ The 100-character overlap is crucial - without it, important context gets lost r
 
 **A:** I used `intfloat/multilingual-e5-base`. 
 
-Why? Well, I needed something that could handle both Bengali and English queries. Tried a few Bengali-specific models but they were either too heavy or couldn't handle the mixed content well.
+Why? I needed a model that could understand both Bangla and English, especially for mixed-content questions. My goal wasn’t just to match words — I needed semantic understanding, so that a question like:
 
-This model is pretty smart - it doesn't just match keywords. If someone asks "কে সুপুরুষ?" and another asks "অনুপমের ভাষায় আদর্শ পুরুষ কে?", it understands these are basically the same question. It creates these 768-dimensional vectors that capture the actual meaning, not just the words.
+“কে সুপুরুষ?”
+or
+“অনুপমের ভাষায় আদর্শ পুরুষ কে?”
+
+...would still retrieve the correct chunk about শুম্ভুনাথ.
+
+**Comparing the Models I Tried :** 
+- intfloat/multilingual-e5-base
+Type: Contrastive retrieval model (trained on "query: ..." ↔ "passage: ..." pairs)
+
+Language Support: Strong multilingual, works great with Bangla + English
+
+Groundedness: 0.81+
+
+Relevance: 0.83+
+
+Verdict: Best balance of semantic understanding and factual grounding. Performs best overall for Bangla RAG, especially with OCR-processed text.
+
+- shihab17/bangla-sentence-transformer
+Type: Sentence similarity model (STS-style, symmetric)
+
+Language Support: Good for Bangla, but lacks English robustness
+
+Groundedness: ~0.57
+
+Relevance: ~0.57
+
+Verdict: Performs well on semantic similarity, but not optimized for retrieval. It often fetches off-topic or loosely related answers — bad for fact-based Q&A like names and numbers.
+
+❌ bhashaai/bangla-e5-base
+Type: Attempted E5-style Bangla retriever
+
+Status: Does not exist on Hugging Face (404 error)
+
+Groundedness / Relevance: N/A
+
+Verdict: Invalid model — cannot be used.
+
+**Reason Why I Chose intfloat/multilingual-e5-base
+Because** 
+
+It understands paraphrases across Bangla and English
+
+It's trained for retrieval, not just similarity
+
+It gives high grounding and relevance, even when OCR text is noisy
+
+It integrates perfectly with LangChain + FAISS
+
+Despite the exact match score being low, that’s mostly due to the LLM generation, not retrieval. The retriever itself surfaces highly relevant and grounded content — and that’s exactly what I need for a high-quality Bangla RAG system.
 
 ### Q: How are you comparing the query with your stored chunks? Why did you choose this similarity method and storage setup?
 
