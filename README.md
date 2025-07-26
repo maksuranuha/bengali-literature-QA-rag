@@ -39,11 +39,13 @@ It builds a multilingual RAG system for HSC Bangla 1st Paper literature using La
 - Cultural context preservation in chunking and retrieval
 
 ## Technical Excellence Highlights 
-Advanced OCR Engineering: Multi-configuration Tesseract ensemble with 5 different OCR strategies, PIL-based image preprocessing (contrast enhancement, Gaussian blur, median filtering), and Bengali-specific character corrections achieving industry-leading text extraction from scanned educational materials.
+- Advanced OCR Engineering: Multi-configuration Tesseract ensemble with 5 different OCR strategies, PIL-based image preprocessing (contrast enhancement, Gaussian blur, median filtering), and Bengali-specific character corrections achieving industry-leading text extraction from scanned educational materials.
 
-Intelligent Answer Processing: Sophisticated regex-based answer extraction with MCQ pattern recognition, Bengali name detection algorithms, Unicode normalization, and context-aware response filtering that handles diverse question formats with semantic validation and accuracy scoring.
-Comprehensive Quality Assurance: Automated evaluation framework with semantic similarity analysis (86.5%), relevance scoring (83.8%), groundedness validation (80.0%), and overall RAG performance measurement (83.7% - Excellent) providing measurable quality metrics and continuous improvement feedback.
-Production-Grade Architecture: Dual-interface system with FastAPI REST endpoints, Streamlit web interface, batch processing capabilities, conversation memory management, and comprehensive error handling designed for educational institution deployment with scalability and reliability.
+- Intelligent Answer Processing: Sophisticated regex-based answer extraction with MCQ pattern recognition, Bengali name detection algorithms, Unicode normalization, and context-aware response filtering that handles diverse question formats with semantic validation and accuracy scoring.
+
+- Comprehensive Quality Assurance: Automated evaluation framework with semantic similarity analysis (86.5%), relevance scoring (83.8%), groundedness validation (80.0%), and overall RAG performance measurement (83.7% - Excellent) providing measurable quality metrics and continuous improvement feedback.
+
+- Production-Grade Architecture: Dual-interface system with FastAPI REST endpoints, Streamlit web interface, batch processing capabilities, conversation memory management, and comprehensive error handling designed for educational institution deployment with scalability and reliability.
 
 ## Sample UI 
 - Main Interface Overview: 
