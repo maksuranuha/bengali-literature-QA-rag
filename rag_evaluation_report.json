@@ -1,0 +1,67 @@
+{
+  "overall_scores": {
+    "semantic_similarity": 0.8653558307522993,
+    "relevance": 0.8383310839646946,
+    "groundedness": 0.8002510999922052
+  },
+  "overall_rag_score": 0.8377169874879896,
+  "performance_level": "Excellent",
+  "detailed_results": [
+    {
+      "question": "অনুপমের ভাষায় সুপুরুষ কাকে বলা হয়েছে?",
+      "expected": "শুম্ভুনাথ",
+      "predicted": "অনুপমের ভাষায় সুপুরুষ কাকে বলা হয়েছে যার চুল কাচা এবং ভাষা আঁট",
+      "scores": {
+        "semantic_similarity": 0.7895968202266745,
+        "relevance": 0.8231282791155604,
+        "groundedness": 0.8353489757112764
+      },
+      "sources_count": 3
+    },
+    {
+      "question": "কাকে অনুপমের ভাগ্য দেবতা বলে উল্লেখ করা হয়েছে?",
+      "expected": "মামাকে",
+      "predicted": "অনুপমের মামা কে ভাগ্য দেবতা বলে উল্লেখ করা হয়েছে",
+      "scores": {
+        "semantic_similarity": 0.8206137291623867,
+        "relevance": 0.8248935416870249,
+        "groundedness": 0.8345621239967409
+      },
+      "sources_count": 3
+    },
+    {
+      "question": "বিয়ের সময় কল্যাণীর প্রকৃত বয়স কত ছিল?",
+      "expected": "১৫ বছর",
+      "predicted": "১৫ বছর",
+      "scores": {
+        "semantic_similarity": 1.0,
+        "relevance": 0.8553378012205598,
+        "groundedness": 0.7811298005805871
+      },
+      "sources_count": 3
+    },
+    {
+      "question": "অনুপমের বন্ধুর নাম কী?",
+      "expected": "শুম্ভুনাথ",
+      "predicted": "হরিশ",
+      "scores": {
+        "semantic_similarity": 0.778742627995143,
+        "relevance": 0.8385253390372321,
+        "groundedness": 0.7714061255095753
+      },
+      "sources_count": 3
+    },
+    {
+      "question": "কল্যাণীর বাবার নাম কী?",
+      "expected": "হরিশচন্দ্র",
+      "predicted": "হরিশচন্দ্র দত্ত",
+      "scores": {
+        "semantic_similarity": 0.9378259763772918,
+        "relevance": 0.8497704587630955,
+        "groundedness": 0.7788084741628465
+      },
+      "sources_count": 3
+    }
+  ],
+  "test_cases_count": 5
+}
