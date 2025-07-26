@@ -3,7 +3,7 @@
 This is a Retrieval-Augmented Generation (RAG) chatbot designed for HSC Bangla 1st Paper students and teachers. It answers questions directly from HSC26-Bangla1st_Paper. 
 It builds a multilingual RAG system for HSC Bangla 1st Paper literature using LangChain, FAISS, and Streamlit. It processes Bengali PDFs through Tesseract OCR, creates vector embeddings with multilingual models, and answers questions in Bengali about literary characters and plot details. 
 
-The system extracts text from scanned PDFs, chunks content with custom Bengali separators, stores embeddings in FAISS vectorstore, and uses Groq's LLM API for answer generation. Includes both a Streamlit web interface and FastAPI endpoints for programmatic access.
+The system extracts text from scanned PDFs, chunks content with custom Bengali separators, stores embeddings in FAISS vectorstore, it also has a short-term memory, and uses Groq's LLM API for answer generation. Includes both a Streamlit web interface and FastAPI endpoints for programmatic access.
 
 ## Sample UI 
 - Main Interface Overview: 
@@ -244,7 +244,7 @@ But hey, it works for the basic test cases and can be improved with better sourc
 
 ### Q: What method or library did you use to extract the text, and why? Did you face any formatting challenges with the PDF content?
 
-**A:** Oh man, this was a headache! I tried PyPDF2 and pdfplumber first, thinking it'd be simple. But the PDF was basically a bunch of scanned images - no actual text to extract. So I had to go with Tesseract OCR.
+**A:**Basically, I tried PyPDF2 and pdfplumber first, thinking it'd be simple. But the PDF was basically a bunch of scanned images - no actual text to extract. So I had to go with Tesseract OCR.
 
 The installation alone was painful - had to download Tesseract, make sure the Bengali language pack was there, mess with PATH variables, install Poppler for PDF handling. Then the OCR kept misreading Bengali characters. "শুম্ভুনাথ" would come out as "শব্তুনাথ" or some gibberish.
 
@@ -290,47 +290,10 @@ The conversation memory helps a lot here. If someone asks "তার বয়�
 
 **What would help:**
 - Better source documents (clean text instead of scanned images)
-- Larger document corpus for more comprehensive coverage  
 - Fine-tuning the embedding model on Bengali literature specifically
 - Smarter chunking based on semantic boundaries rather than character count
 
 The core RAG pipeline works well - it's the input quality that limits performance.
-
-## API Documentation
-
-### Starting the API Server
-
-```bash
-# Run the API server
-uvicorn chatbot:app --host 0.0.0.0 --port 8000
-
-# Test the endpoint
-curl -X POST http://localhost:8000/ask \
-  -H "Content-Type: application/json" \
-  -d '{"question": "অনুপমের ভাষায় সুপুরুষ কাকে বলা হয়েছে?"}'
-```
-
-### API Endpoints
-
-**POST /ask**
-
-Request:
-```json
-{
-  "question": "কল্যাণীর বয়স কত ছিল?"
-}
-```
-
-Response:
-```json
-{
-  "question": "কল্যাণীর বয়স কত ছিল?",
-  "answer": "১৫ বছর",
-  "sources": [
-    {"page": 3, "source": "data/hsc_bangla.pdf"}
-  ]
-}
-``` 
 
 ## Contributing
 
