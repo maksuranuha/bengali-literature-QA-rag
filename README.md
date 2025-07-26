@@ -288,13 +288,11 @@ Verdict: Invalid model — cannot be used.
 **Reason Why I Chose intfloat/multilingual-e5-base
 Because** 
 
-It understands paraphrases across Bangla and English
+- It understands paraphrases across Bangla and English
 
-It's trained for retrieval, not just similarity
+- It's trained for retrieval, not just similarity
 
-It gives high grounding and relevance, even when OCR text is noisy
-
-It integrates perfectly with LangChain + FAISS
+- It gives high grounding and relevance, even when OCR text was not much cleaned
 
 Despite the exact match score being low, that’s mostly due to the LLM generation, not retrieval. The retriever itself surfaces highly relevant and grounded content — and that’s exactly what I need for a high-quality Bangla RAG system.
 
