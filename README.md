@@ -1,12 +1,18 @@
 # Bengali RAG System for HSC Literature
 
 This is a Retrieval-Augmented Generation (RAG) chatbot designed for HSC Bangla 1st Paper students and teachers. It answers questions directly from HSC26-Bangla1st_Paper. 
+It builds a multilingual RAG system for HSC Bangla 1st Paper literature using LangChain, FAISS, and Streamlit. It processes Bengali PDFs through Tesseract OCR, creates vector embeddings with multilingual models, and answers questions in Bengali about literary characters and plot details. The system extracts text from scanned PDFs, chunks content with custom Bengali separators, stores embeddings in FAISS vectorstore, and uses Groq's LLM API for answer generation. Includes both a Streamlit web interface and FastAPI endpoints for programmatic access.
+
+## Sample UI 
+
+<img width="1919" height="965" alt="Screenshot 2025-07-26 140431" src="https://github.com/user-attachments/assets/68778d40-7725-4340-bde8-f4e1d75b76c9" />
+
+<img width="740" height="648" alt="Screenshot 2025-07-26 140600" src="https://github.com/user-attachments/assets/18ffa0f2-bf73-4ab0-b762-3c8c1983dc5a" />
 
 
-It builds a multilingual RAG system for HSC Bangla 1st Paper literature using LangChain, FAISS, and Streamlit. It processes Bengali PDFs through Tesseract OCR, creates vector embeddings with multilingual models, and answers questions in both Bengali and English about literary characters and plot details. The system extracts text from scanned PDFs, chunks content with custom Bengali separators, stores embeddings in FAISS vectorstore, and uses Groq's LLM API for answer generation. Includes both a Streamlit web interface and FastAPI endpoints for programmatic access.
+<img width="781" height="802" alt="Screenshot 2025-07-26 140632" src="https://github.com/user-attachments/assets/a64dfa22-4c51-4c2e-abdb-8f147167c47d" />
 
 ## What This Does
-
 The system can take questions in both Bengali and English about literature content and tries to give you accurate answers. It's specifically trained on HSC Bangla 1st Paper material, so it knows about characters like অনুপম, কল্যাণী, and stories from that curriculum.
 
 ## Quick Setup
