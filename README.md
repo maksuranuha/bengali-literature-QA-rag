@@ -243,7 +243,3 @@ But hey, it works for the basic test cases and can be improved with better sourc
 ## Contributing
 
 Feel free to fork and improve! The OCR part especially could use some work. If you have better ideas for Bengali text extraction or processing, I'd love to see them.
-
-## License
-
-MIT - do whatever you want with it!
