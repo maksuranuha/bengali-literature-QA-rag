@@ -207,25 +207,6 @@ I went with **character-based chunking (500 chars, 100 overlap)** with custom se
 - LLM is prompted to say "তথ্য পাওয়া যায়নি" if context insufficient
 - Conversation memory helps with follow-up questions
 
-### Results and Improvements
-
-**Current performance:** Pretty decent for the test cases, but OCR quality is the main bottleneck.
-
-**What could be better:**
-- Better PDF quality would improve OCR accuracy significantly
-- Larger document corpus would provide more context
-- Fine-tuning the embedding model on Bengali literature
-- Better chunking based on semantic boundaries rather than character count
-- More sophisticated post-processing for OCR errors
-
-**Main issues I faced:**
-- PDF text extraction was impossible without OCR
-- Tesseract installation and setup on Windows was frustrating
-- Bengali OCR accuracy isn't perfect, especially with old fonts
-- Some character recognition errors still slip through
-
-But hey, it works for the basic test cases and can be improved with better source material!
-
 ## File Structure
 
 ```
@@ -288,10 +269,23 @@ The conversation memory helps a lot here. If someone asks "তার বয়�
 
 **Main bottleneck:** OCR quality. The source PDF has scanning artifacts that create noise in the embeddings.
 
-**What would help:**
-- Better source documents (clean text instead of scanned images)
-- Fine-tuning the embedding model on Bengali literature specifically
+### Results and Improvements
+
+**Current performance:** Pretty decent for the test cases, but OCR quality is the main bottleneck.
+
+**What could be better:**
+- Better PDF quality would improve OCR accuracy significantly
+- Larger document corpus would provide more context
+- Fine-tuning the embedding model on Bengali literature
+- Better chunking based on semantic boundaries rather than character count
+- More sophisticated post-processing for OCR errors
 - Smarter chunking based on semantic boundaries rather than character count
+
+**Main issues I faced:**
+- PDF text extraction was impossible without OCR
+- Tesseract installation and setup on Windows was frustrating
+- Bengali OCR accuracy isn't perfect, especially with old fonts
+- Some character recognition errors still slip through
 
 The core RAG pipeline works well - it's the input quality that limits performance.
 
