@@ -4,14 +4,13 @@ This is a Retrieval-Augmented Generation (RAG) chatbot designed for HSC Bangla 1
 It builds a multilingual RAG system for HSC Bangla 1st Paper literature using LangChain, FAISS, and Streamlit. It processes Bengali PDFs through Tesseract OCR, creates vector embeddings with multilingual models, and answers questions in Bengali about literary characters and plot details. The system extracts text from scanned PDFs, chunks content with custom Bengali separators, stores embeddings in FAISS vectorstore, and uses Groq's LLM API for answer generation. Includes both a Streamlit web interface and FastAPI endpoints for programmatic access.
 
 ## Sample UI 
-
+- Main Interface Overview: 
 <img width="1919" height="965" alt="Screenshot 2025-07-26 140431" src="https://github.com/user-attachments/assets/68778d40-7725-4340-bde8-f4e1d75b76c9" />
 
-
+- When the query is processing : 
 <img width="781" height="781" alt="Screenshot 2025-07-26 140600" src="https://github.com/user-attachments/assets/18ffa0f2-bf73-4ab0-b762-3c8c1983dc5a" />
 
-
-
+- Anwer Processed with relevant Page number : 
 <img width="781" height="781" alt="Screenshot 2025-07-26 140632" src="https://github.com/user-attachments/assets/a64dfa22-4c51-4c2e-abdb-8f147167c47d" />
 
 ## What This Does
