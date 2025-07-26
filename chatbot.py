@@ -39,6 +39,7 @@ Context থেকে সরাসরি উত্তরটি তুলে দ�
 
 
 CONDENSE_TEMPLATE = """Given the following conversation and a follow up question, rephrase the follow up question to be standalone.
+If the follow up question refers to previous context (like "তার", "সেটি", "ওটা"), include that context in the standalone question.
 
 Chat History:
 {chat_history}
@@ -108,7 +109,8 @@ def setup_chain(vectorstore):
     memory = ConversationBufferMemory(
         memory_key="chat_history",
         return_messages=True,
-        output_key="answer"
+        output_key="answer",
+        max_token_limit=2000
     )
 
     qa_prompt = PromptTemplate(template=QA_TEMPLATE, input_variables=["context", "question"])
