@@ -304,11 +304,22 @@ My setup retrieves 5 chunks but fetches 12 candidates first. This gives the syst
 
 ### Q: How do you ensure that the question and document chunks are compared meaningfully? What would happen if the query is vague or missing context?
 
-**A:** I built a query enhancement system. Bengali question words like "কাকে" get expanded to include variations like "কে", "কার নাম". This helps match different ways of asking the same thing.
+**A:** I ensured meaningful comparison by embedding both the query and the document chunks into the same semantic space using intfloat/multilingual-e5-base. This means: Bengali question words like "কাকে" get expanded to include variations like "কে", "কার নাম". This helps match different ways of asking the same thing. For vague queries, the system still retrieves the most similar chunks it can find. Then the LLM decides if there's enough context to answer. If not, it returns "তথ্য পাওয়া যায়নি".
+The conversation memory helps a lot here. If someone asks "তার বয়স কত?" after asking about a character, the system remembers the context. 
 
-For vague queries, the system still retrieves the most similar chunks it can find. Then the LLM decides if there's enough context to answer. If not, it returns "তথ্য পাওয়া যায়নি".
+- Every query → converted into a 768‑dimensional vector.
 
-The conversation memory helps a lot here. If someone asks "তার বয়স কত?" after asking about a character, the system remembers the context.
+- Every chunk → stored as a 768‑dimensional vector in FAISS.
+
+Because they live in the same embedding space, FAISS can measure cosine similarity between them. Cosine similarity doesn’t care about the length of the text (magnitude of the vector); it cares about the direction — which is crucial for semantic search.
+
+For example:
+
+“কে সুপুরুষ?”
+
+“অনুপমের ভাষায় আদর্শ পুরুষ কে?”
+
+These don’t share many keywords but point in the same direction in embedding space, so cosine similarity marks them as close.
 
 ### Q: Do the results seem relevant? If not, what might improve them?
 
