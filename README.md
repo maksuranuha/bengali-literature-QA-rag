@@ -225,7 +225,7 @@ I went with **character-based chunking (500 chars, 100 overlap)** with custom se
 
 ### Q: What method or library did you use to extract the text, and why? Did you face any formatting challenges with the PDF content?
 
-**A:**Basically, I tried PyPDF2 and pdfplumber first, thinking it'd be simple. But the PDF was basically a bunch of scanned images - no actual text to extract. So I had to go with Tesseract OCR.
+**A:** Basically, I tried PyPDF2 and pdfplumber first, thinking it'd be simple. But the PDF was basically a bunch of scanned images - no actual text to extract. So I had to go with Tesseract OCR.
 
 The installation alone was painful - had to download Tesseract, make sure the Bengali language pack was there, mess with PATH variables, install Poppler for PDF handling. Then the OCR kept misreading Bengali characters. "শুম্ভুনাথ" would come out as "শব্তুনাথ" or some gibberish.
 
