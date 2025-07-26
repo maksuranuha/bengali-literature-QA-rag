@@ -239,6 +239,98 @@ But hey, it works for the basic test cases and can be improved with better sourc
 ├── requirements.txt      # Python dependencies
 └── README.md            # This file
 ```
+## Questions 
+## Technical Q&A - Behind the Scenes
+
+### Q: What method or library did you use to extract the text, and why? Did you face any formatting challenges with the PDF content?
+
+**A:** Oh man, this was a headache! I tried PyPDF2 and pdfplumber first, thinking it'd be simple. But the PDF was basically a bunch of scanned images - no actual text to extract. So I had to go with Tesseract OCR.
+
+The installation alone was painful - had to download Tesseract, make sure the Bengali language pack was there, mess with PATH variables, install Poppler for PDF handling. Then the OCR kept misreading Bengali characters. "শুম্ভুনাথ" would come out as "শব্তুনাথ" or some gibberish.
+
+I ended up scaling images 5x before feeding them to OCR, trying different configurations, and building a post-processing pipeline to fix common errors. Still not perfect, but way better than the initial attempts.
+
+### Q: What chunking strategy did you choose? Why do you think it works well for semantic retrieval?
+
+**A:** I went with 500 characters with 100 character overlap. Honestly, this took some trial and error.
+
+Started with 1000 characters thinking "bigger chunks = more context = better answers." Wrong! The answers were too generic. Then tried 800, then 600, finally settled on 500. 
+
+The thing is, Bengali sentences can be really long, so I couldn't just split on sentences. I used custom separators like "।।", "।", and paragraph breaks that actually respect how Bengali text flows.
+
+The 100-character overlap is crucial - without it, important context gets lost right at chunk boundaries. Like if a character's name is at the end of one chunk and their description starts the next chunk, you'd lose the connection.
+
+### Q: What embedding model did you use? Why did you choose it? How does it capture the meaning of the text?
+
+**A:** I used `intfloat/multilingual-e5-base`. 
+
+Why? Well, I needed something that could handle both Bengali and English queries. Tried a few Bengali-specific models but they were either too heavy or couldn't handle the mixed content well.
+
+This model is pretty smart - it doesn't just match keywords. If someone asks "কে সুপুরুষ?" and another asks "অনুপমের ভাষায় আদর্শ পুরুষ কে?", it understands these are basically the same question. It creates these 768-dimensional vectors that capture the actual meaning, not just the words.
+
+### Q: How are you comparing the query with your stored chunks? Why did you choose this similarity method and storage setup?
+
+**A:** FAISS with cosine similarity. I chose FAISS because it's fast and handles large vector databases efficiently. Cosine similarity works well for text embeddings - it focuses on the direction of vectors rather than magnitude, which is what you want for semantic similarity.
+
+My setup retrieves 5 chunks but fetches 12 candidates first. This gives the system more options to pick the most relevant ones.
+
+### Q: How do you ensure that the question and document chunks are compared meaningfully? What would happen if the query is vague or missing context?
+
+**A:** I built a query enhancement system. Bengali question words like "কাকে" get expanded to include variations like "কে", "কার নাম". This helps match different ways of asking the same thing.
+
+For vague queries, the system still retrieves the most similar chunks it can find. Then the LLM decides if there's enough context to answer. If not, it returns "তথ্য পাওয়া যায়নি".
+
+The conversation memory helps a lot here. If someone asks "তার বয়স কত?" after asking about a character, the system remembers the context.
+
+### Q: Do the results seem relevant? If not, what might improve them?
+
+**A:** For the test cases, yes. The system correctly identifies character relationships and specific details. But there's room for improvement.
+
+**Main bottleneck:** OCR quality. The source PDF has scanning artifacts that create noise in the embeddings.
+
+**What would help:**
+- Better source documents (clean text instead of scanned images)
+- Larger document corpus for more comprehensive coverage  
+- Fine-tuning the embedding model on Bengali literature specifically
+- Smarter chunking based on semantic boundaries rather than character count
+
+The core RAG pipeline works well - it's the input quality that limits performance.
+
+## API Documentation
+
+### Starting the API Server
+
+```bash
+# Run the API server
+uvicorn chatbot:app --host 0.0.0.0 --port 8000
+
+# Test the endpoint
+curl -X POST http://localhost:8000/ask \
+  -H "Content-Type: application/json" \
+  -d '{"question": "অনুপমের ভাষায় সুপুরুষ কাকে বলা হয়েছে?"}'
+```
+
+### API Endpoints
+
+**POST /ask**
+
+Request:
+```json
+{
+  "question": "কল্যাণীর বয়স কত ছিল?"
+}
+```
+
+Response:
+```json
+{
+  "question": "কল্যাণীর বয়স কত ছিল?",
+  "answer": "১৫ বছর",
+  "sources": [
+    {"page": 3, "source": "data/hsc_bangla.pdf"}
+  ]
+}
+``` 
 
 ## Contributing
 
