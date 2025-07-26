@@ -287,7 +287,7 @@ The conversation memory helps a lot here. If someone asks "তার বয়�
 - Bengali OCR accuracy isn't perfect, especially with old fonts
 - Some character recognition errors still slip through
 
-The core RAG pipeline works well as I got above 80% for both evaluations groundness and - it's the input quality that limits performance.
+All evaluation scores exceeded 80%, with groundedness and relevance both performing strongly; remaining performance constraints stem mainly from input quality.
 
 ## Contributing
 
