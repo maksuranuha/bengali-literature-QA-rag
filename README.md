@@ -7,10 +7,12 @@ It builds a multilingual RAG system for HSC Bangla 1st Paper literature using La
 
 <img width="1919" height="965" alt="Screenshot 2025-07-26 140431" src="https://github.com/user-attachments/assets/68778d40-7725-4340-bde8-f4e1d75b76c9" />
 
-<img width="740" height="648" alt="Screenshot 2025-07-26 140600" src="https://github.com/user-attachments/assets/18ffa0f2-bf73-4ab0-b762-3c8c1983dc5a" />
+
+<img width="781" height="781" alt="Screenshot 2025-07-26 140600" src="https://github.com/user-attachments/assets/18ffa0f2-bf73-4ab0-b762-3c8c1983dc5a" />
 
 
-<img width="781" height="802" alt="Screenshot 2025-07-26 140632" src="https://github.com/user-attachments/assets/a64dfa22-4c51-4c2e-abdb-8f147167c47d" />
+
+<img width="781" height="781" alt="Screenshot 2025-07-26 140632" src="https://github.com/user-attachments/assets/a64dfa22-4c51-4c2e-abdb-8f147167c47d" />
 
 ## What This Does
 The system can take questions in both Bengali and English about literature content and tries to give you accurate answers. It's specifically trained on HSC Bangla 1st Paper material, so it knows about characters like অনুপম, কল্যাণী, and stories from that curriculum.
