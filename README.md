@@ -1,7 +1,7 @@
 # Bengali RAG System for HSC Literature
 
-This is a Retrieval-Augmented Generation (RAG) chatbot designed for HSC Bangla 1st Paper students and teachers. It answers questions directly from HSC26-Bangla1st_Paper. 
-It builds a multilingual RAG system for HSC Bangla 1st Paper literature using LangChain, FAISS, and Streamlit. It processes Bengali PDFs through Tesseract OCR, creates vector embeddings with multilingual models, and answers questions in Bengali about literary characters and plot details. 
+This project is a Retrieval-Augmented Generation (RAG) chatbot built for HSC Bangla 1st Paper students and teachers. Using LangChain, FAISS, and Streamlit, it delivers precise answers from HSC26-Bangla1st_Paper. The PDF was processed with Tesseract OCR and turned into vector embeddings via multilingual models. The chatbot combines short-term conversational memory (buffer) with long-term knowledge storage (FAISS) to provide natural Bangla explanations of literary characters, themes, and plot details
+
 ### Key Features 
 🚀 Advanced OCR Engineering
 
