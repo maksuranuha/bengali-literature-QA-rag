@@ -390,23 +390,24 @@ Contextual understanding: 82.1% relevance in complex literary relationships (অ
 
 **What could be better:**
 Despite achieving Excellent performance (83.7% overall RAG score), several enhancements could push the system toward near-perfect accuracy:
-OCR & Document Quality Improvements: 
+
+#### OCR & Document Quality Improvements: 
 - Higher resolution source materials - Moving from scanned PDFs to digitally-born texts could eliminate OCR dependency entirely and boost accuracy from 83.7% to potentially 90%+
 - Advanced OCR ensemble weighting - Implementing confidence-based voting across the 5 Tesseract configurations rather than simple score-based selection
 - Contextual OCR error correction - Machine learning-based post-processing trained on HSC literature vocabulary patterns
 
-##  Corpus & Knowledge Base Enhancement:
+#### Corpus & Knowledge Base Enhancement:
 
 - Expanded document corpus - Including additional HSC literature texts, commentaries, and reference materials could improve cross-contextual understanding and boost the current 83.8% relevance score
 - Structured knowledge integration - Adding character relationship databases and plot summaries as supplementary retrieval sources
 
-## Embedding & Retrieval Optimization:
+####  Embedding & Retrieval Optimization:
 
 - Domain-specific fine-tuning - Training the multilingual-e5-base model on Bengali literature corpus could improve the current 86.5% semantic similarity score
 - Semantic boundary chunking - Implementing NLP-based sentence and paragraph boundary detection rather than character-count splitting for more contextually coherent retrieval units
 - Dynamic chunk sizing - Adaptive chunking based on content complexity and question type (names vs. relationships vs. plot details)
 
-## Advanced Processing Techniques:
+####  Advanced Processing Techniques:
 
 - Contextual answer validation - Cross-referencing answers against multiple retrieved chunks to identify and correct inconsistencies
 - Confidence-based response filtering - Implementing dynamic thresholds that return "তথ্য পাওয়া যায়নি" for low-confidence predictions rather than potentially incorrect answers
